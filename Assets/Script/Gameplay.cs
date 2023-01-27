@@ -16,7 +16,6 @@ public class Gameplay : MonoBehaviour
         int playerLevel = player.GetComponent<PlayerControler>().playerLevel;
         TextMeshPro enemieLevelText = enemiesPrefab.level.GetComponent<TextMeshPro>();
         int enemieLevel = Convert.ToInt32(enemieLevelText.text);
-        player.transform.position = enemiesPrefab.PlayerPosition.transform.position;
         GameObject playerText = player.GetComponent<PlayerControler>().levelPlayerText;
             if (playerLevel >= enemieLevel)
             {
@@ -24,7 +23,8 @@ public class Gameplay : MonoBehaviour
                 player.GetComponent<PlayerControler>().playerLevel = newLevel;
                 playerText.GetComponent<TextMeshPro>().text = newLevel.ToString();
                 Destroy(enemyInScene);
-            }
+                player.transform.position = new Vector3(-9.14f, -3.74f, 0);
+        }
             else
             {
                 SceneManager.LoadScene("LooseMenu");
@@ -33,8 +33,6 @@ public class Gameplay : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        GameObject player = collision.gameObject;
-        player.transform.position = new Vector3(-9.14f, -3.74f, 0);
         Destroy(enemiesPrefab.stage);
     }
 }

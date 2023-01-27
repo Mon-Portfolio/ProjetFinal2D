@@ -14,7 +14,6 @@ public class EnemiesSpawner : MonoBehaviour
     public float marginTop = -0.7f;
     public Floor enemiesPrefab;
     public PlayerControler playerLevel;
-    // Start is called before the first frame update
     void Start()
     {
         int minLevel = 8;
