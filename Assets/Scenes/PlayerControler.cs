@@ -10,12 +10,10 @@ public class PlayerControler : MonoBehaviour
     public int playerLevel;
 
 
-    void Start()
+    void Awake()
     {
         playerLevel = Random.Range(10, 16);
         levelPlayerText.GetComponent<TextMeshPro>().text = playerLevel.ToString();
-        
-        Debug.Log(playerLevel);
 
     }
 
