@@ -9,8 +9,6 @@ public class Gameplay : MonoBehaviour
 {
 
     public Floor enemiesPrefab;
-    //public PlayerControler LPT;
-    // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject player = collision.gameObject;
@@ -19,23 +17,24 @@ public class Gameplay : MonoBehaviour
         TextMeshPro enemieLevelText = enemiesPrefab.level.GetComponent<TextMeshPro>();
         int enemieLevel = Convert.ToInt32(enemieLevelText.text);
         player.transform.position = enemiesPrefab.PlayerPosition.transform.position;
-        Debug.Log(enemieLevel + "convert");
         GameObject playerText = player.GetComponent<PlayerControler>().levelPlayerText;
-        if (playerLevel >= enemieLevel)
-        {
-            Debug.Log("peut tuer");
-            int newLevel = playerLevel + enemieLevel;
-            player.GetComponent<PlayerControler>().playerLevel = newLevel;
-            playerText.GetComponent<TextMeshPro>().text = newLevel.ToString();
-            Destroy(enemyInScene);
-        } else
-        {
-            SceneManager.LoadScene("LooseMenu");
+            if (playerLevel >= enemieLevel)
+            {
+                int newLevel = playerLevel + enemieLevel;
+                player.GetComponent<PlayerControler>().playerLevel = newLevel;
+                playerText.GetComponent<TextMeshPro>().text = newLevel.ToString();
+                Destroy(enemyInScene);
+            }
+            else
+            {
+                SceneManager.LoadScene("LooseMenu");
+            }
         }
-    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        GameObject player = collision.gameObject;
+        player.transform.position = new Vector3(-9.14f, -3.74f, 0);
         Destroy(enemiesPrefab.stage);
     }
 }

@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesPrefab: {fileID: 8718871455900743579}
+  count: 0
 --- !u!50 &-6227711888289260065
 Rigidbody2D:
   serializedVersion: 4
@@ -302,7 +303,7 @@ GameObject:
   - component: {fileID: 1062772941974158156}
   m_Layer: 0
   m_Name: Enemies
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
