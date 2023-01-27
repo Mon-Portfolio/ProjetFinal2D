@@ -19,7 +19,6 @@ public class EnemiesSpawner : MonoBehaviour
     {
         int minLevel = 8;
         int maxLevel = playerLevel.playerLevel;
-        UnityEngine.Debug.Log(maxLevel + "player level");
         marginTop = -0.7f;
         for (int i = 0; i< countEnemies; i++)
         {
@@ -28,11 +27,8 @@ public class EnemiesSpawner : MonoBehaviour
             TextMeshPro level = enemiesPrefab.level.GetComponent<TextMeshPro>();
             int enemieLevel = UnityEngine.Random.Range(minLevel, maxLevel-1);
             level.text = enemieLevel.ToString();
-            UnityEngine.Debug.Log(minLevel + "level min");
-            UnityEngine.Debug.Log(maxLevel + "level max");
-            minLevel = playerLevel.playerLevel + enemieLevel;
-            maxLevel += enemieLevel;
-            
+            minLevel = playerLevel.playerLevel / 2 + enemieLevel;
+            maxLevel = playerLevel.playerLevel + enemieLevel;
         }
     }
 }
